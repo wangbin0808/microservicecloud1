@@ -1,0 +1,41 @@
+server:
+  port: 9003
+ 
+spring:
+  application:
+    name: microservicecloud1-dept # 这个是定义服务的名称
+  datasource:
+    url: jdbc:mysql://localhost:3306/test2
+    password: root
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource # druid的数据源
+    driver-class-name:  org.gjt.mm.mysql.Driver
+    dbcp2:
+      max-total: 5 # 数据连接池最大保持的最大连接数
+      max-wait-millis: 200 # 最大等待时间
+      initial-size: 5 # 初始化连接池的时的连接数大小
+      min-idle: 5  # 这个表示最小的闲置数
+      
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.jrj.springcloud.bean # 这个包下的类都可以使用别名
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+  
+eureka:
+  client:
+    service-url:
+     # defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: microservicecloud1-dept9003 # 服务名称信息
+    prefer-ip-address: true # 这个表示当鼠标悬浮在服务名称上面的时候会显示出ip、端口等
+
+info:
+  app.name:  jrj-microservicecloud1-dept9003  
+  company.name: www.jrj.com.cn
+  build.artifactId: microservicecloud1-provider-dept-9003
+  build.version: 0.0.1-SNAPSHOT
+      
+ 
+    

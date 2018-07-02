@@ -1,0 +1,31 @@
+server:
+  port: 9527
+  
+spring: 
+  application:
+    name: microservicecloud1-zuul-gateway # 服务名称
+
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: gateway-9527.com 
+    prefer-ip-address: true 
+    hostname: gateway-9527.com 
+    
+info:
+  app.name: microservicecloud1-zuul-gateway-9527
+  company.name: www.jrj.com.cn
+  build.artifactId: microservicecloud1-zuul-gateway-9527
+  build.version: 0.0.1
+  
+zuul:
+ # prefix: /jrj  # 这个是表示在访问的时候加一个这个前置
+ # ignored-services: microservicecloud1-dept # 如果这是*的话是忽略所有的服务，只能使用/mydept/来访问
+  routes: 
+    mydept.serviceId: microservicecloud1-dept # 这个服务的简化成/mydept/
+    mydept.path: /mydept/**
+    
+    

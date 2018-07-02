@@ -1,0 +1,21 @@
+server: 
+  port: 80
+  
+eureka:
+  client: 
+    service-url: 
+     # defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka，http://eureka7003.com:7003/eureka
+     defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: microservicecloud1-consumer80 # 自定义消费名称信息
+    prefer-ip-address: true # 这个表示能显示ip和端口号      
+    
+spring:
+  application:
+    name: microservicecloud1-consumer80
+    
+info: 
+  app.name: jrj-microservicecloud-consumer80
+  company.name: www.jrj.com.cn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$

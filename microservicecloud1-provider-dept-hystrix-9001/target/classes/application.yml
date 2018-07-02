@@ -1,0 +1,37 @@
+server:
+  port: 9001
+  
+spring:
+  application:
+    name: microservicecloud1-dept # 服务名称
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    type: com.alibaba.druid.pool.DruidDataSource
+    password: root
+    username: root
+    driver-class-name: org.gjt.mm.mysql.Driver # 驱动
+    dbcp2:
+      max-total: 5 # 最多有多少连接数
+      max-wait-millis: 200 # 最大等待时间
+      min-idle: 5 # 闲置的最小数量
+      initial-size: 5 # 初始化数据库连接池的大小
+      
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml 
+  type-aliases-package:  com.jrj.springcloud.bean 
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: microservicecloud1-dept9001-hystrix # 服务信息
+    prefer-ip-address: true # 这个表示当鼠标悬浮在服务信息上面的时候，会显示ip、端口号等
+    
+info:
+  app.name: microservicecloud1-dept9001-hystrix
+  company.name: www.jrj.com.cn
+  build.artifactId: microservicecloud1-provider-dept-hystrix-9001
+  build.version: 0.0.1

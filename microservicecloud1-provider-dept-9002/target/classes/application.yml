@@ -1,0 +1,41 @@
+server:
+  port: 9002
+  
+spring:
+  application:
+    name: microservicecloud1-dept # 服务名称   
+  datasource:
+    url: jdbc:mysql://localhost:3306/test1
+    password: root
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource   #Druid的数据库连接池
+    driver-class-name: org.gjt.mm.mysql.Driver     
+    dbcp2: 
+      max-wait-millis: 200 #最大的等待时间
+      max-total: 5 # 数据连接池的最大连接数
+      min-idle: 5 #最小的闲置数
+      initial-size: 5 # 数据连接池初始化的连接数大小
+      
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml # mybatis的配置xml
+  type-aliases-package: com.jrj.springcloud.bean  # 在这个包下的类都可以是别名
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml             #这个表示mapper的文件锁对应的路径
+  
+  
+eureka:
+  instance:
+    instance-id: microservicecloud1-dept9002  # 这个就是服务信息
+    prefer-ip-address: true # 这个表示当鼠标悬浮在服务信息上的时候会显示ip、端口号 如：http://192.168.121.1:9001/info
+  client:
+    service-url:   # 下面的这个就是eureka的注册中心
+      #defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka
+      defaultZone: http://eureka7001.com:7001/eureka
+info: # 下面的那个可以是自定义的，最后访问http://192.168.121.1:9001/info，会显示下面的信息
+  app.name: jrj-microservicecloud1-microservicecloud1-dept9002
+  company.name: www.jrj.com.cn
+  build.artifactId: microservicecloud1-provider-dept-9002
+  build.version: 0.0.1-SNAPSHOT
+    
+    
+    
